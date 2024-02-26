@@ -1,3 +1,5 @@
+import { redis } from "../lib/redis";
+import { getDate } from "../utils";
 type AnalyticsArgs = {
   retention?: number;
 };
@@ -20,12 +22,7 @@ export class Analytics {
       key += `::${getDate()}`;
     }
 
-    // to do---  add db credentials and client and getDate() functionality
-    // db call to persists the data
-
     await redis.hincrby(key, JSON.stringify(event), 1);
-
-    // if not persists clear expired keys
 
     if (!opts?.persists) await redis.expire(key, this.retention);
   }
