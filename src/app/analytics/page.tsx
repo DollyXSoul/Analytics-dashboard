@@ -3,8 +3,8 @@ import AnalyticsDashboard from "@/components/AnalyticsDashboard";
 import { getDate } from "@/utils";
 
 const Page = async () => {
-  const TRACKINK_DAYS = 7;
-  const pageviews = await analytics.retrieveDays("pageview", TRACKINK_DAYS);
+  const TRACKING_DAYS = 7;
+  const pageviews = await analytics.retrieveDays("pageview", TRACKING_DAYS);
 
   const totalPageViews = pageviews.reduce((acc, curr) => {
     return (
@@ -15,7 +15,7 @@ const Page = async () => {
     );
   }, 0);
 
-  const avgVisitorsPerDay = (totalPageViews / TRACKINK_DAYS).toFixed(1);
+  const avgVisitorsPerDay = (totalPageViews / TRACKING_DAYS).toFixed(1);
 
   const visitorsToday = pageviews
     .filter((ev) => ev.date === getDate())
@@ -32,6 +32,7 @@ const Page = async () => {
         <AnalyticsDashboard
           visitorsToday={visitorsToday}
           avgVisitorsPerDay={avgVisitorsPerDay}
+          timeseriesPageViews={pageviews}
         />
       </div>
     </div>
