@@ -105,18 +105,23 @@ const AnalyticsDashboard = ({
 
       <Card>
         {timeseriesPageViews ? (
-          <BarChart
-            data={timeseriesPageViews.map((day) => ({
-              name: day.date,
-              Visitors: day.events.reduce((acc, curr) => {
-                return acc + Object.values(curr)[0]!;
-              }, 0),
-            }))}
-            allowDecimals={false}
-            index="name"
-            categories={["Visitors"]}
-            showAnimation
-          />
+          <>
+            <h2 className="text-xl font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong text-left">
+              Number of visitors in a Week
+            </h2>
+            <BarChart
+              data={timeseriesPageViews.map((day) => ({
+                name: day.date,
+                Visitors: day.events.reduce((acc, curr) => {
+                  return acc + Object.values(curr)[0]!;
+                }, 0),
+              }))}
+              allowDecimals={false}
+              index="name"
+              categories={["Visitors"]}
+              showAnimation
+            />
+          </>
         ) : null}
       </Card>
     </div>
