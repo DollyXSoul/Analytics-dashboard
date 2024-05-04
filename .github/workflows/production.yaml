@@ -13,10 +13,10 @@ jobs:
   Deploy_production:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Vercel CLI
-        run: npm install --global vercel@canary
+        run: npm install --global vercel
 
       - name: Pull Vercel environment information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
