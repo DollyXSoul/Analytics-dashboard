@@ -11,7 +11,7 @@ on:
 
 jobs:
   Deploy_production:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
